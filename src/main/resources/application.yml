@@ -1,0 +1,34 @@
+mybatis:
+  configuration:
+    cache-enabled: false
+    use-generated-keys: true
+    default-executor-type: reuse
+    map-underscore-to-camel-case: true
+  mapper-locations:
+    - classpath:com/example/multitransaction/mapper/**/*.xml
+
+
+spring:
+  datasource:
+    admin:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://10.165.62.46:59307/op_admin?autoReconnect=true&characterEncoding=UTF-8&useAffectedRows=true&serverTimezone=UTC&allowMultiQueries=true
+      username: overprime_mng
+      password: '@YhrCV!^2yt&4s$'
+      hikari:
+        auto-commit: false
+        minimum-idle: 0
+        maximum-pool-size: 3
+        connection-test-query: SELECT 1
+
+    game:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://10.165.62.46:59307/op_game?autoReconnect=true&characterEncoding=UTF-8&useAffectedRows=true&serverTimezone=UTC
+      username: overprime_mng
+      password: '@YhrCV!^2yt&4s$'
+      hikari:
+        auto-commit: false
+        minimum-idle: 1
+        maximum-pool-size: 3
+        connection-test-query: SELECT 1
+
