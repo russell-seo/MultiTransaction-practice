@@ -31,4 +31,22 @@ spring:
         minimum-idle: 1
         maximum-pool-size: 3
         connection-test-query: SELECT 1
+  jta:
+    enabled: true
+    atomikos:
+      datasource:
+        jtagame:
+          unique-resource-name : jtxGameDataSource
+          xa-data-source-class-name: com.mysql.cj.jdbc.MysqlXADataSource
+          xa-properties:
+            user: overprime_mng
+            password: '@YhrCV!^2yt&4s$'
+            url: jdbc:mysql://10.165.62.46:59307/op_game?autoReconnect=true&characterEncoding=UTF-8&useAffectedRows=true&serverTimezone=UTC
+        jtaadmin:
+          unique-resource-name: jtaAdminDataSource
+          xa-data-source-class-name: com.mysql.cj.jdbc.MysqlXADataSource
+          xa-properties:
+            user: overprime_mng
+            password: '@YhrCV!^2yt&4s$'
+            url: jdbc:mysql://10.165.62.46:59307/op_admin?autoReconnect=true&characterEncoding=UTF-8&useAffectedRows=true&serverTimezone=UTC&allowMultiQueries=true
 

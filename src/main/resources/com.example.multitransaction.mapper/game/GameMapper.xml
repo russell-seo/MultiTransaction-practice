@@ -8,4 +8,17 @@
                                                       )
     </insert>
 
+
+
+    <insert id="createIpBanToOpGameDB">
+        insert into ip_blocklist
+        (ip_address)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item}
+            )
+        </foreach>
+    </insert>
+
 </mapper>

@@ -25,11 +25,6 @@ public class GameDataBaseConfig {
         return sqlSessionFactoryBean.getObject();
     }
 
-
-
-
-
-
     @Bean(name = "gameSqlSessionTemplate")
     public SqlSessionTemplate gameSqlSessionTemplate(SqlSessionFactory gameSqlSessionFactory){
         return new SqlSessionTemplate(gameSqlSessionFactory);

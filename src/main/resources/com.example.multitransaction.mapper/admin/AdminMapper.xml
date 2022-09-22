@@ -4,4 +4,21 @@
 <mapper namespace="com.example.multitransaction.mapper.admin.AdminMapper">
 
 
+    <insert id="createIpBanByExcel">
+        insert into ip_ban
+        (ip_address, start_date, end_date, register_id, ban_reason, ban_count, is_ban)
+        values
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+            #{item.ipAddress},
+            #{item.startDate},
+            #{item.endDate},
+            #{item.registerId},
+            #{item.banReason},
+            1,
+            TRUE
+            )
+        </foreach>
+    </insert>
+
 </mapper>

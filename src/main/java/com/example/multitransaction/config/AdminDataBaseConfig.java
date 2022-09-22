@@ -14,10 +14,10 @@ import javax.sql.DataSource;
 
 @Configuration
 @MapperScan(basePackages = {"com.example.multitransaction.mapper.admin"}, sqlSessionFactoryRef = "adminSqlSessionFactory")
-public class DataBaseConfig {
+public class AdminDataBaseConfig {
 
     @Bean(name = "adminSqlSessionFactory")
-    @Primary
+//    @Primary
     public SqlSessionFactory adminSqlSessionFactory(@Qualifier("adminDataSource") DataSource adminDataSource, ApplicationContext applicationContext) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(adminDataSource);
@@ -26,8 +26,9 @@ public class DataBaseConfig {
         return sqlSessionFactoryBean.getObject();
     }
 
+
     @Bean(name = "adminSqlSessionTemplate")
-    @Primary
+//    @Primary
     public SqlSessionTemplate adminSqlSessionTemplate(SqlSessionFactory adminSqlSessionFactory){
         return new SqlSessionTemplate(adminSqlSessionFactory);
     }

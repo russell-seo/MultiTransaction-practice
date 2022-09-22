@@ -9,6 +9,8 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
@@ -17,11 +19,16 @@ import javax.sql.DataSource;
 public class DataSourceProperties {
 
     @Bean(name = "adminDataSource")
-    @Primary
+//    @Primary
     @Qualifier("adminDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.admin")
     public DataSource adminDataSource(){
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
+    }
+
+    @Bean(name = "adminTxManager")
+    public PlatformTransactionManager adminTxManager(){
+        return new DataSourceTransactionManager(adminDataSource());
     }
 
     @Bean(name = "gameDataSource")
@@ -30,4 +37,11 @@ public class DataSourceProperties {
     public DataSource gameDataSource(){
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
+
+    @Bean(name = "gameTxManager")
+    public PlatformTransactionManager gameTxManager(){
+        return new DataSourceTransactionManager(gameDataSource());
+    }
 }
+
+
